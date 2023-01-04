@@ -22,4 +22,8 @@ st.write('Output')
 df = df.loc[df['% identity'] == 100]
 df = df.loc[(df['q. end'] == df['query length']) & (df['s. start'] == 1)]
 df = df.loc[df['query id'] != df['subject id']]
+
 st.write(df)
+
+output = df.to_csv().encode('utf-8')
+st.download_button('Output CSV', output, file_name='Output.csv', mime='text/csv')
