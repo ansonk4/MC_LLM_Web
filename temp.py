@@ -6,7 +6,7 @@ with open(file_path, 'r') as file:
     content = file.readlines()
 
 # Add a newline character at the end of each line
-content = [line.rstrip() + '\n' for line in content]
+content = [line.rstrip() + '\n\n' for line in content]
 
 # Write the updated contents back to the file
 with open(file_path, 'w') as file:
