@@ -41,17 +41,17 @@ e_4_3 = e_4.number_input('狩獵場 (+60分)', step = 1)
 e_4_4 = e_4.number_input('領地意識 (+100分)', step = 1)
 
 e_5 = emergency.expander('第五層')
-e_5_1 = e_5.number_input('機械之災 (+50分)', step = 1)
-e_5_2 = e_5.number_input('好夢在何方 (+50分)', step = 1)
-e_5_3 = e_5.number_input('育生池 (+60分)', step = 1)
-e_5_4 = e_5.number_input('失控 (+100分)', step = 1)
+e_5_1 = e_5.number_input('機械之災 (+60分)', step = 1)
+e_5_2 = e_5.number_input('好夢在何方 (+90分)', step = 1)
+e_5_3 = e_5.number_input('育生池 (+90分)', step = 1)
+e_5_4 = e_5.number_input('失控 (+150分)', step = 1)
 
 e_6 = emergency.expander('第六層')
 e_6_1 = e_6.number_input('深度認知 (+90分)', step = 1)
 e_6_2 = e_6.number_input('水火相容 (+150分)', step = 1)
 
 emergency_score = (e_3_1 + e_3_2 + e_3_3 + e_3_4) * 40 + e_4_1 * 50 + e_4_2 * 50 + e_4_3 * 60 + e_4_4 * 100 \
-  + e_5_1 * 50 + e_5_2 * 50 + e_5_3 * 60 + e_5_4 * 60 + e_6_1 * 90 + e_6_2 * 150
+  + e_5_1 * 60 + e_5_2 * 90 + e_5_3 * 90 + e_5_4 * 150 + e_6_1 * 90 + e_6_2 * 150
 emergency.subheader(emergency_score)
 
 duck = col3.container(border = True)
@@ -84,5 +84,9 @@ enlightenment = mis.number_input('啓示 (+50分)', step = 1)
 mis_score = collectibles * 10 + enlightenment * 50
 mis.subheader(mis_score)
 
-total_score = rec_tol + end_score + floor_score + emergency_score + duck_score + c_total + en_score + mis_score
-st.metric('總分', value=total_score)
+col4, col5, col6 = st.columns(3)
+adjust = col4.number_input('結算分', step = 1)
+total_score = rec_tol + end_score + floor_score + emergency_score + duck_score + c_total + en_score + mis_score + adjust 
+col4.metric('總分', value=total_score)
+
+
